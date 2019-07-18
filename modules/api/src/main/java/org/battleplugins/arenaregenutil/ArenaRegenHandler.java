@@ -1,7 +1,9 @@
 package org.battleplugins.arenaregenutil;
 
 import org.battleplugins.arenaregenutil.region.ArenaRegion;
+import org.bukkit.Location;
 import org.bukkit.block.Block;
+import org.bukkit.entity.Player;
 import org.bukkit.plugin.Plugin;
 
 import java.util.List;
@@ -26,19 +28,31 @@ public interface ArenaRegenHandler {
     void regenArea(Plugin plugin, List<Block> oldBlocks, int tickInterval, int delay);
 
     /**
+     * Saves a schematic with the specified name
+     *
+     * @param player the player saving the schematic
+     * @param schematic the schematic being saved
+     */
+    void saveSchematic(Player player, String schematic);
+
+    /**
      * Pastes a schematic with the specified {@link ArenaRegion}
      *
      * @param region the region to paste the schematic in
+     * @param schematic the name of the schematic
+     * @param loc the location to paste the schematic at
      * @param pasteInstant if the schematic should be pasted instantly
      */
-    void pasteSchematic(ArenaRegion region, boolean pasteInstant);
+    void pasteSchematic(ArenaRegion region, String schematic, Location loc, boolean pasteInstant);
 
     /**
      * Pastes a schematic with the given world name and id
      *
      * @param worldName the name of the world
      * @param id the id/name of the schematic
+     * @param schematic the name of the schematic
+     * @param loc the location to paste the schematic at
      * @param pasteInstant if the schematic should be pasted instantly
      */
-    void pasteSchematic(String worldName, String id, boolean pasteInstant);
+    void pasteSchematic(String worldName, String id, String schematic, Location loc, boolean pasteInstant);
 }

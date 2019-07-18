@@ -20,9 +20,9 @@
         <module>modules/api</module>
         <!-- <module>modules/coreprotect</module> -->
         <!-- <module>modules/pylamorestoration</module> -->
-        <!-- <module>modules/worldedit/v5</module> -->
-        <!-- <module>modules/worldedit/v6</module> -->
-        <!-- <module>modules/worldedit/v7</module> -->
+        <module>modules/worldedit/v5</module>
+        <module>modules/worldedit/v6</module>
+        <module>modules/worldedit/v7</module>
         <module>modules/ArenaRegenUtil</module>
     </modules>
     <repositories>
