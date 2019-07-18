@@ -1,7 +1,15 @@
 package org.battleplugins.arenaregenutil.worldedit.v5;
 
 import com.sk89q.minecraft.util.commands.CommandContext;
-import com.sk89q.worldedit.*;
+import com.sk89q.worldedit.CuboidClipboard;
+import com.sk89q.worldedit.EditSession;
+import com.sk89q.worldedit.LocalConfiguration;
+import com.sk89q.worldedit.LocalPlayer;
+import com.sk89q.worldedit.LocalSession;
+import com.sk89q.worldedit.LocalWorld;
+import com.sk89q.worldedit.ServerInterface;
+import com.sk89q.worldedit.Vector;
+import com.sk89q.worldedit.WorldEdit;
 import com.sk89q.worldedit.bukkit.BukkitCommandSender;
 import com.sk89q.worldedit.bukkit.BukkitPlayer;
 import com.sk89q.worldedit.bukkit.BukkitUtil;
