@@ -4,6 +4,8 @@ import de.pylamo.pylamorestorationsystem.Commands.CreateRegionCommand;
 import de.pylamo.pylamorestorationsystem.Commands.DeleteRegionCommand;
 import de.pylamo.pylamorestorationsystem.Commands.RestoreCommand;
 import org.battleplugins.arenaregenutil.AbstractArenaRegenHandler;
+import org.battleplugins.arenaregenutil.ArenaRegenController;
+import org.battleplugins.arenaregenutil.RegenPlugin;
 import org.battleplugins.arenaregenutil.region.ArenaSelection;
 import org.battleplugins.arenaregenutil.worldedit.WorldEditRegenController;
 import org.bukkit.Bukkit;
@@ -34,6 +36,6 @@ public class PylamoRegenHandler extends AbstractArenaRegenHandler {
 
     @Override
     public ArenaSelection getSelection(Player player) {
-        return WorldEditRegenController.getSelection(player);
+        return ArenaRegenController.getSelection(RegenPlugin.WORLDEDIT, player);
     }
 }
