@@ -19,6 +19,8 @@ import com.sk89q.worldedit.data.DataException;
 import com.sk89q.worldedit.regions.Region;
 import com.sk89q.worldedit.schematic.SchematicFormat;
 import org.battleplugins.arenaregenutil.AbstractArenaRegenHandler;
+import org.battleplugins.arenaregenutil.region.ArenaSelection;
+import org.battleplugins.arenaregenutil.worldedit.WorldEditRegenController;
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.World;
@@ -35,34 +37,35 @@ import java.io.IOException;
  */
 public class WorldEditRegenHandler extends AbstractArenaRegenHandler {
 
-    private WorldEditPlugin wep = (WorldEditPlugin) Bukkit.getPluginManager().getPlugin("WorldEdit");
-
     @Override
     public void saveSchematic(Player player, String schematic) {
         CommandContext cc;
+        WorldEditPlugin wep = (WorldEditPlugin) WorldEditRegenController.getWorldEditPlugin();
         final LocalSession session = wep.getSession(player);
         final BukkitPlayer lPlayer = wep.wrapPlayer(player);
         EditSession editSession = session.createEditSession(lPlayer);
 
-        try {
-            Region region = session.getSelection(lPlayer.getWorld());
-            Vector min = region.getMinimumPoint();
-            Vector max = region.getMaximumPoint();
-            CuboidClipboard clipboard = new CuboidClipboard(
-                    max.subtract(min).add(new Vector(1, 1, 1)),
-                    min, new Vector(0, 0, 0));
-            clipboard.copy(editSession);
-            session.setClipboard(clipboard);
+        ArenaSelection selection = getSelection(player);
+        Vector min = BukkitUtil.toVector(selection.getMinimumPoint());
+        Vector max = BukkitUtil.toVector(selection.getMaximumPoint());
 
+        CuboidClipboard clipboard = new CuboidClipboard(
+                max.subtract(min).add(new Vector(1, 1, 1)),
+                min, new Vector(0, 0, 0));
+        clipboard.copy(editSession);
+        session.setClipboard(clipboard);
+
+        try {
             SchematicCommands sc = new SchematicCommands(wep.getWorldEdit());
             String args2[] = {"save", "mcedit", schematic};
             cc = new CommandContext(args2);
             sc.save(cc, session, lPlayer, editSession);
-            return;
-        } catch (Exception ex) {
-            ex.printStackTrace();
+        } catch (Exception e) {
+            e.printStackTrace();
             return;
         }
+
+        return;
     }
 
     // TODO: Setup pasteInstant option
@@ -75,6 +78,7 @@ public class WorldEditRegenHandler extends AbstractArenaRegenHandler {
 
         CommandContext cc;
         String args[] = {"load", schematic};
+        final WorldEditPlugin wep = (WorldEditPlugin) WorldEditRegenController.getWorldEditPlugin();
         final WorldEdit we = wep.getWorldEdit();
         LocalPlayer bcs = new ConsolePlayer(wep, wep.getServerInterface(), sender, world);
 
@@ -131,6 +135,27 @@ public class WorldEditRegenHandler extends AbstractArenaRegenHandler {
             player.printError("Error : " + e.getMessage());
         }
         return true;
+    }
+
+    @Override
+    public ArenaSelection getSelection(Player player) {
+        final WorldEditPlugin wep = (WorldEditPlugin) WorldEditRegenController.getWorldEditPlugin();
+        final LocalSession session = wep.getSession(player);
+        final BukkitPlayer lPlayer = wep.wrapPlayer(player);
+
+        try {
+            Region region = session.getSelection(lPlayer.getWorld());
+            Vector min = region.getMinimumPoint();
+            Vector max = region.getMaximumPoint();
+
+            World world = BukkitUtil.toWorld(region.getWorld());
+            Location minLoc = new Location(world, min.getX(), min.getY(), min.getZ());
+            Location maxLoc = new Location(world, max.getX(), max.getY(), max.getZ());
+            return new ArenaSelection(minLoc, maxLoc);
+        } catch (Exception ex) {
+            ex.printStackTrace();
+            return null;
+        }
     }
 
     public class ConsolePlayer extends BukkitCommandSender {

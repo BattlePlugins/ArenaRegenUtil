@@ -8,6 +8,7 @@ import com.sk89q.worldedit.MaxChangedBlocksException;
 import com.sk89q.worldedit.WorldEdit;
 import com.sk89q.worldedit.WorldEditException;
 import com.sk89q.worldedit.bukkit.BukkitAdapter;
+import com.sk89q.worldedit.bukkit.BukkitPlayer;
 import com.sk89q.worldedit.bukkit.WorldEditPlugin;
 import com.sk89q.worldedit.extent.clipboard.BlockArrayClipboard;
 import com.sk89q.worldedit.extent.clipboard.Clipboard;
@@ -15,13 +16,17 @@ import com.sk89q.worldedit.extent.clipboard.io.*;
 import com.sk89q.worldedit.function.operation.ForwardExtentCopy;
 import com.sk89q.worldedit.function.operation.Operation;
 import com.sk89q.worldedit.function.operation.Operations;
+import com.sk89q.worldedit.math.BlockVector3;
 import com.sk89q.worldedit.regions.Region;
 import com.sk89q.worldedit.session.ClipboardHolder;
 import com.sk89q.worldedit.util.io.Closer;
 import com.sk89q.worldedit.util.io.file.FilenameException;
 import org.battleplugins.arenaregenutil.AbstractArenaRegenHandler;
+import org.battleplugins.arenaregenutil.region.ArenaSelection;
+import org.battleplugins.arenaregenutil.worldedit.WorldEditRegenController;
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
+import org.bukkit.World;
 import org.bukkit.entity.Player;
 
 import java.io.BufferedOutputStream;
@@ -37,10 +42,9 @@ import java.io.IOException;
  */
 public class WorldEditRegenHandler extends AbstractArenaRegenHandler {
 
-    private WorldEditPlugin wep = (WorldEditPlugin) Bukkit.getPluginManager().getPlugin("WorldEdit");
-
     @Override
     public void saveSchematic(Player player, String schematic) {
+        final WorldEditPlugin wep = (WorldEditPlugin) WorldEditRegenController.getWorldEditPlugin();
         LocalSession session = wep.getSession(player);
         com.sk89q.worldedit.entity.Player wePlayer = wep.wrapPlayer(player);
         EditSession editSession = session.createEditSession(wePlayer);
@@ -112,6 +116,27 @@ public class WorldEditRegenHandler extends AbstractArenaRegenHandler {
             }
         } catch (IOException ex) {
             ex.printStackTrace();
+        }
+    }
+
+    @Override
+    public ArenaSelection getSelection(Player player) {
+        final WorldEditPlugin wep = (WorldEditPlugin) WorldEditRegenController.getWorldEditPlugin();
+        final LocalSession session = wep.getSession(player);
+        final BukkitPlayer lPlayer = wep.wrapPlayer(player);
+
+        try {
+            Region region = session.getSelection(lPlayer.getWorld());
+            BlockVector3 min = region.getMinimumPoint();
+            BlockVector3 max = region.getMaximumPoint();
+
+            World world = BukkitAdapter.adapt(region.getWorld());
+            Location minLoc = new Location(world, min.getX(), min.getY(), min.getZ());
+            Location maxLoc = new Location(world, max.getX(), max.getY(), max.getZ());
+            return new ArenaSelection(minLoc, maxLoc);
+        } catch (Exception ex) {
+            ex.printStackTrace();
+            return null;
         }
     }
 }

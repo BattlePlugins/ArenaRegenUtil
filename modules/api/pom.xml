@@ -19,5 +19,10 @@
             <version>1.7.2-R0.3</version>
             <scope>provided</scope>
         </dependency>
+        <dependency>
+            <groupId>mc.euro</groupId>
+            <artifactId>Version</artifactId>
+            <version>4.0.1</version>
+        </dependency>
     </dependencies>
 </project>

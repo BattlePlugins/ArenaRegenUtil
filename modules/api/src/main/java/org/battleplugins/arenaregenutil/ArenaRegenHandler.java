@@ -1,6 +1,7 @@
 package org.battleplugins.arenaregenutil;
 
 import org.battleplugins.arenaregenutil.region.ArenaRegion;
+import org.battleplugins.arenaregenutil.region.ArenaSelection;
 import org.bukkit.Location;
 import org.bukkit.block.Block;
 import org.bukkit.entity.Player;
@@ -55,4 +56,12 @@ public interface ArenaRegenHandler {
      * @param pasteInstant if the schematic should be pasted instantly
      */
     void pasteSchematic(String worldName, String id, String schematic, Location loc, boolean pasteInstant);
+
+    /**
+     * Returns the player's current selection
+     *
+     * @param player the player with the selection
+     * @return the player's current selection
+     */
+    ArenaSelection getSelection(Player player);
 }

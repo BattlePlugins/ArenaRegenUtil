@@ -20,8 +20,11 @@ import com.sk89q.worldedit.schematic.MCEditSchematicFormat;
 import com.sk89q.worldedit.util.io.Closer;
 import com.sk89q.worldedit.world.registry.LegacyWorldData;
 import org.battleplugins.arenaregenutil.AbstractArenaRegenHandler;
+import org.battleplugins.arenaregenutil.region.ArenaSelection;
+import org.battleplugins.arenaregenutil.worldedit.WorldEditRegenController;
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
+import org.bukkit.World;
 import org.bukkit.entity.Player;
 
 import java.io.BufferedOutputStream;
@@ -36,10 +39,9 @@ import java.io.IOException;
  */
 public class WorldEditRegenHandler extends AbstractArenaRegenHandler {
 
-    private WorldEditPlugin wep = (WorldEditPlugin) Bukkit.getPluginManager().getPlugin("WorldEdit");
-
     @Override
     public void saveSchematic(Player player, String schematic) {
+        final WorldEditPlugin wep = (WorldEditPlugin) WorldEditRegenController.getWorldEditPlugin();
         LocalSession session = wep.getSession(player);
         com.sk89q.worldedit.entity.Player wePlayer = wep.wrapPlayer(player);
         EditSession editSession = session.createEditSession(wePlayer);
@@ -97,6 +99,27 @@ public class WorldEditRegenHandler extends AbstractArenaRegenHandler {
             return;
         } catch (MaxChangedBlocksException | com.sk89q.worldedit.data.DataException | IOException ex) {
             ex.printStackTrace();
+        }
+    }
+
+    @Override
+    public ArenaSelection getSelection(Player player) {
+        final WorldEditPlugin wep = (WorldEditPlugin) WorldEditRegenController.getWorldEditPlugin();
+        final LocalSession session = wep.getSession(player);
+        com.sk89q.worldedit.entity.Player wePlayer = wep.wrapPlayer(player);
+
+        try {
+            Region region = session.getSelection(wePlayer.getWorld());
+            Vector min = region.getMinimumPoint();
+            Vector max = region.getMaximumPoint();
+
+            World world = Bukkit.getWorld(region.getWorld().getName());
+            Location minLoc = new Location(world, min.getX(), min.getY(), min.getZ());
+            Location maxLoc = new Location(world, max.getX(), max.getY(), max.getZ());
+            return new ArenaSelection(minLoc, maxLoc);
+        } catch (Exception ex) {
+            ex.printStackTrace();
+            return null;
         }
     }
 }
