@@ -11,7 +11,6 @@ import com.sk89q.worldedit.data.DataException;
 import com.sk89q.worldedit.regions.Region;
 import com.sk89q.worldedit.schematic.SchematicFormat;
 import org.battleplugins.arenaregenutil.AbstractArenaRegenHandler;
-import org.battleplugins.arenaregenutil.region.ArenaRegion;
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.World;
