@@ -22,11 +22,11 @@ import java.io.File;
 import java.io.IOException;
 
 /**
- * Region handler for WorldEdit v5
+ * Regen handler for WorldEdit v5
  *
  * @author alkarin, Redned
  */
-public class WorldEditRegionHandler extends AbstractArenaRegenHandler {
+public class WorldEditRegenHandler extends AbstractArenaRegenHandler {
 
     private WorldEditPlugin wep = (WorldEditPlugin) Bukkit.getPluginManager().getPlugin("WorldEdit");
 
@@ -56,11 +56,6 @@ public class WorldEditRegionHandler extends AbstractArenaRegenHandler {
             ex.printStackTrace();
             return;
         }
-    }
-
-    @Override
-    public void pasteSchematic(ArenaRegion region, String schematic, Location loc, boolean pasteInstant) {
-        pasteSchematic(region.getWorld().getName(), region.getID(), schematic, loc, pasteInstant);
     }
 
     // TODO: Setup pasteInstant option
