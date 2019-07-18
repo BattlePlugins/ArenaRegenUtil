@@ -136,7 +136,7 @@
                         <configuration>
                             <artifactSet>
                                 <includes>
-                                    <include>org.battleplugins:-*</include>
+                                    <include>org.battleplugins.arenaregenutil:ArenaRegenUtil-*</include>
                                 </includes>
                             </artifactSet>
                         </configuration>
