@@ -7,7 +7,6 @@ import org.battleplugins.arenaregenutil.AbstractArenaRegenHandler;
 import org.battleplugins.arenaregenutil.ArenaRegenController;
 import org.battleplugins.arenaregenutil.RegenPlugin;
 import org.battleplugins.arenaregenutil.region.ArenaSelection;
-import org.battleplugins.arenaregenutil.worldedit.WorldEditRegenController;
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.entity.Player;
@@ -30,7 +29,7 @@ public class PylamoRegenHandler extends AbstractArenaRegenHandler {
     }
 
     @Override
-    public void pasteSchematic(String worldName, String id, String schematic, Location loc, boolean pasteInstant) {
+    public void pasteSchematic(String worldName, String id, String schematic, Location loc) {
         RestoreCommand.restoreCommand(Bukkit.getConsoleSender(), new String[]{"restore", schematic});
     }
 

@@ -68,9 +68,8 @@ public class WorldEditRegenHandler extends AbstractArenaRegenHandler {
         return;
     }
 
-    // TODO: Setup pasteInstant option
     @Override
-    public void pasteSchematic(String worldName, String id, String schematic, Location loc, boolean pasteInstant) {
+    public void pasteSchematic(String worldName, String id, String schematic, Location loc) {
         CommandSender sender = Bukkit.getConsoleSender();
         World world = Bukkit.getWorld(worldName);
         if (world == null)
@@ -94,7 +93,7 @@ public class WorldEditRegenHandler extends AbstractArenaRegenHandler {
         }
     }
 
-    public boolean loadAndPaste(CommandContext args, WorldEdit we,
+    public void loadAndPaste(CommandContext args, WorldEdit we,
                                 LocalSession session, LocalPlayer player, EditSession editSession, Location loc) {
 
         LocalConfiguration config = we.getConfiguration();
@@ -109,12 +108,12 @@ public class WorldEditRegenHandler extends AbstractArenaRegenHandler {
 
             if (!filePath.substring(0, dirPath.length()).equals(dirPath)) {
                 player.printError("Schematic could not read or it does not exist.");
-                return false;
+                return;
             }
             SchematicFormat format = SchematicFormat.getFormat(f);
             if (format == null) {
                 player.printError("Unknown schematic format for file" + f);
-                return false;
+                return;
             }
 
             if (!filePath.substring(0, dirPath.length()).equals(dirPath)) {
@@ -134,7 +133,6 @@ public class WorldEditRegenHandler extends AbstractArenaRegenHandler {
             e.printStackTrace();
             player.printError("Error : " + e.getMessage());
         }
-        return true;
     }
 
     @Override

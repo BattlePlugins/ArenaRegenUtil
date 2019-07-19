@@ -4,6 +4,7 @@ import org.battleplugins.arenaregenutil.region.ArenaRegion;
 import org.battleplugins.arenaregenutil.region.ArenaSelection;
 import org.battleplugins.arenaregenutil.worldedit.PylamoRegenController;
 import org.battleplugins.arenaregenutil.worldedit.WorldEditRegenController;
+import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.block.Block;
 import org.bukkit.entity.Player;
@@ -112,10 +113,9 @@ public class ArenaRegenController {
      * @param region the region to paste the schematic in
      * @param schematic the name of the schematic
      * @param loc the location to paste the schematic at
-     * @param pasteInstant if the schematic should be pasted instantly
      */
-    public static void pasteSchematic(ArenaRegion region, String schematic, Location loc, boolean pasteInstant) {
-       pasteSchematic(defaultPlugin, region, schematic, loc, pasteInstant);
+    public static void pasteSchematic(ArenaRegion region, String schematic, Location loc) {
+       pasteSchematic(defaultPlugin, region, schematic, loc);
     }
 
     /**
@@ -125,10 +125,9 @@ public class ArenaRegenController {
      * @param region the region to paste the schematic in
      * @param schematic the name of the schematic
      * @param loc the location to paste the schematic at
-     * @param pasteInstant if the schematic should be pasted instantly
      */
-    public static void pasteSchematic(RegenPlugin regenPlugin, ArenaRegion region, String schematic, Location loc, boolean pasteInstant) {
-        registeredRegenPlugins.get(regenPlugin).pasteSchematic(region, schematic, loc, pasteInstant);
+    public static void pasteSchematic(RegenPlugin regenPlugin, ArenaRegion region, String schematic, Location loc) {
+        registeredRegenPlugins.get(regenPlugin).pasteSchematic(region, schematic, loc);
     }
 
     /**
@@ -138,10 +137,9 @@ public class ArenaRegenController {
      * @param id the id/name of the schematic
      * @param schematic the name of the schematic
      * @param loc the location to paste the schematic at
-     * @param pasteInstant if the schematic should be pasted instantly
      */
-    public static void pasteSchematic(String worldName, String id, String schematic, Location loc, boolean pasteInstant) {
-        pasteSchematic(defaultPlugin, worldName, id, schematic, loc, pasteInstant);
+    public static void pasteSchematic(String worldName, String id, String schematic, Location loc) {
+        pasteSchematic(defaultPlugin, worldName, id, schematic, loc);
     }
 
     /**
@@ -152,10 +150,9 @@ public class ArenaRegenController {
      * @param id the id/name of the schematic
      * @param schematic the name of the schematic
      * @param loc the location to paste the schematic at
-     * @param pasteInstant if the schematic should be pasted instantly
      */
-    public static void pasteSchematic(RegenPlugin regenPlugin, String worldName, String id, String schematic, Location loc, boolean pasteInstant) {
-        registeredRegenPlugins.get(regenPlugin).pasteSchematic(worldName, id, schematic, loc, pasteInstant);
+    public static void pasteSchematic(RegenPlugin regenPlugin, String worldName, String id, String schematic, Location loc) {
+        registeredRegenPlugins.get(regenPlugin).pasteSchematic(worldName, id, schematic, loc);
     }
 
     /**

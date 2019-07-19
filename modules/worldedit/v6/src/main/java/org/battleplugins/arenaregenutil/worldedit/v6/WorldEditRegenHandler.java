@@ -79,9 +79,8 @@ public class WorldEditRegenHandler extends AbstractArenaRegenHandler {
         }
     }
 
-    // TODO: Setup pasteInstant option
     @Override
-    public void pasteSchematic(String worldName, String id, String schematic, Location loc, boolean pasteInstant) {
+    public void pasteSchematic(String worldName, String id, String schematic, Location loc) {
         WorldEdit we = WorldEdit.getInstance();
 
         LocalConfiguration config = we.getConfiguration();

@@ -12,8 +12,8 @@ import java.util.List;
 public abstract class AbstractArenaRegenHandler implements ArenaRegenHandler {
 
     @Override
-    public void pasteSchematic(ArenaRegion region, String schematic, Location loc, boolean pasteInstant) {
-        pasteSchematic(region.getWorld().getName(), region.getID(), schematic, loc, pasteInstant);
+    public void pasteSchematic(ArenaRegion region, String schematic, Location loc) {
+        pasteSchematic(region.getWorld().getName(), region.getID(), schematic, loc);
     }
 
     @Override

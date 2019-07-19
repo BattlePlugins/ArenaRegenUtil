@@ -42,9 +42,8 @@ public interface ArenaRegenHandler {
      * @param region the region to paste the schematic in
      * @param schematic the name of the schematic
      * @param loc the location to paste the schematic at
-     * @param pasteInstant if the schematic should be pasted instantly
      */
-    void pasteSchematic(ArenaRegion region, String schematic, Location loc, boolean pasteInstant);
+    void pasteSchematic(ArenaRegion region, String schematic, Location loc);
 
     /**
      * Pastes a schematic with the given world name and id
@@ -53,9 +52,8 @@ public interface ArenaRegenHandler {
      * @param id the id/name of the schematic
      * @param schematic the name of the schematic
      * @param loc the location to paste the schematic at
-     * @param pasteInstant if the schematic should be pasted instantly
      */
-    void pasteSchematic(String worldName, String id, String schematic, Location loc, boolean pasteInstant);
+    void pasteSchematic(String worldName, String id, String schematic, Location loc);
 
     /**
      * Returns the player's current selection
