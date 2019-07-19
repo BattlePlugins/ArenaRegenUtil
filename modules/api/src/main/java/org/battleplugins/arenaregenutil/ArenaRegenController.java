@@ -132,11 +132,10 @@ public class ArenaRegenController {
      * Pastes a schematic with the specified {@link ArenaRegion}
      *
      * @param region the region to paste the schematic in
-     * @param schematic the name of the schematic
      * @param loc the location to paste the schematic at
      */
-    public static void pasteSchematic(ArenaRegion region, String schematic, Location loc) {
-       pasteSchematic(defaultPlugin, region, schematic, loc);
+    public static void pasteSchematic(ArenaRegion region, Location loc) {
+       pasteSchematic(defaultPlugin, region, loc);
     }
 
     /**
@@ -144,11 +143,10 @@ public class ArenaRegenController {
      *
      * @param regenPlugin the regen plugin to paste the schematic from
      * @param region the region to paste the schematic in
-     * @param schematic the name of the schematic
      * @param loc the location to paste the schematic at
      */
-    public static void pasteSchematic(RegenPlugin regenPlugin, ArenaRegion region, String schematic, Location loc) {
-        registeredRegenPlugins.get(regenPlugin).pasteSchematic(region, schematic, loc);
+    public static void pasteSchematic(RegenPlugin regenPlugin, ArenaRegion region, Location loc) {
+        registeredRegenPlugins.get(regenPlugin).pasteSchematic(region, loc);
     }
 
     /**
