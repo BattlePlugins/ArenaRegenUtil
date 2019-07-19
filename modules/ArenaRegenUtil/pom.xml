@@ -59,6 +59,7 @@
             <scope>compile</scope>
             <optional>true</optional>
         </dependency>
+        -->
         <dependency>
             <groupId>org.battleplugins.arenaregenutil</groupId>
             <artifactId>ArenaRegenUtil-pylamorestoration</artifactId>
@@ -66,7 +67,6 @@
             <scope>compile</scope>
             <optional>true</optional>
         </dependency>
-        -->
         <dependency>
             <groupId>org.battleplugins.arenaregenutil</groupId>
             <artifactId>ArenaRegenUtil-worldedit-v5</artifactId>

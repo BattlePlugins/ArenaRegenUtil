@@ -5,7 +5,7 @@
         <groupId>org.battleplugins.arenaregenutil</groupId>
         <artifactId>ArenaRegenUtil-parent</artifactId>
         <version>parent</version>
-        <relativePath>../../../</relativePath>
+        <relativePath>../../</relativePath>
     </parent>
     <groupId>org.battleplugins.arenaregenutil</groupId>
     <artifactId>ArenaRegenUtil-pylamorestoration</artifactId>

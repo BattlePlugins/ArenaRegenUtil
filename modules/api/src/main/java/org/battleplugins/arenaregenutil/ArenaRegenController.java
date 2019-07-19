@@ -108,6 +108,27 @@ public class ArenaRegenController {
     }
 
     /**
+     * Saves a schematic with the specified name
+     *
+     * @param player the player saving the schematic
+     * @param schematic the schematic being saved
+     */
+    public static void saveSchematic(Player player, String schematic) {
+        registeredRegenPlugins.get(defaultPlugin).saveSchematic(player, schematic);
+    }
+
+    /**
+     * Saves a schematic with the specified name
+     *
+     * @param regenPlugin the regen plugin to save the schematic with
+     * @param player the player saving the schematic
+     * @param schematic the schematic being saved
+     */
+    public static void saveSchematic(RegenPlugin regenPlugin, Player player, String schematic) {
+        registeredRegenPlugins.get(regenPlugin).saveSchematic(player, schematic);
+    }
+
+    /**
      * Pastes a schematic with the specified {@link ArenaRegion}
      *
      * @param region the region to paste the schematic in
