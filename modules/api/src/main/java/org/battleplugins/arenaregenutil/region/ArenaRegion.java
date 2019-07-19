@@ -17,6 +17,12 @@ public class ArenaRegion {
     private World world;
 
     /**
+     * Constructs a new ArenaRegion instance with empty parameters
+     */
+    public ArenaRegion() {
+
+    }
+    /**
      * Constructs a new ArenaRegion instance
      *
      * @param world the world the region is in
