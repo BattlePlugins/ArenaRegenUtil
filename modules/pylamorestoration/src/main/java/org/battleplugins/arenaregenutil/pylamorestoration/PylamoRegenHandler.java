@@ -29,7 +29,7 @@ public class PylamoRegenHandler extends AbstractArenaRegenHandler {
     }
 
     @Override
-    public void pasteSchematic(String worldName, String id, String schematic, Location loc) {
+    public void pasteSchematic(String worldName, String schematic, Location loc) {
         RestoreCommand.restoreCommand(Bukkit.getConsoleSender(), new String[]{"restore", schematic});
     }
 

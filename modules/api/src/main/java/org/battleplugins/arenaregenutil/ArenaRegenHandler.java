@@ -40,20 +40,18 @@ public interface ArenaRegenHandler {
      * Pastes a schematic with the specified {@link ArenaRegion}
      *
      * @param region the region to paste the schematic in
-     * @param schematic the name of the schematic
      * @param loc the location to paste the schematic at
      */
-    void pasteSchematic(ArenaRegion region, String schematic, Location loc);
+    void pasteSchematic(ArenaRegion region, Location loc);
 
     /**
      * Pastes a schematic with the given world name and id
      *
      * @param worldName the name of the world
-     * @param id the id/name of the schematic
      * @param schematic the name of the schematic
      * @param loc the location to paste the schematic at
      */
-    void pasteSchematic(String worldName, String id, String schematic, Location loc);
+    void pasteSchematic(String worldName, String schematic, Location loc);
 
     /**
      * Returns the player's current selection

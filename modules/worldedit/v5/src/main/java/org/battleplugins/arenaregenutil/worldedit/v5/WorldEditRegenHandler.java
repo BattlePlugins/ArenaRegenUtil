@@ -69,7 +69,7 @@ public class WorldEditRegenHandler extends AbstractArenaRegenHandler {
     }
 
     @Override
-    public void pasteSchematic(String worldName, String id, String schematic, Location loc) {
+    public void pasteSchematic(String worldName, String schematic, Location loc) {
         CommandSender sender = Bukkit.getConsoleSender();
         World world = Bukkit.getWorld(worldName);
         if (world == null)

@@ -12,7 +12,7 @@ public class EmptyRegenHandler extends AbstractArenaRegenHandler {
     }
 
     @Override
-    public void pasteSchematic(String worldName, String id, String schematic, Location loc) {
+    public void pasteSchematic(String worldName, String schematic, Location loc) {
         /* do nothing */
     }
 

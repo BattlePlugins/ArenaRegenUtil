@@ -155,12 +155,11 @@ public class ArenaRegenController {
      * Pastes a schematic with the given world name and id
      *
      * @param worldName the name of the world
-     * @param id the id/name of the schematic
      * @param schematic the name of the schematic
      * @param loc the location to paste the schematic at
      */
-    public static void pasteSchematic(String worldName, String id, String schematic, Location loc) {
-        pasteSchematic(defaultPlugin, worldName, id, schematic, loc);
+    public static void pasteSchematic(String worldName, String schematic, Location loc) {
+        pasteSchematic(defaultPlugin, worldName, schematic, loc);
     }
 
     /**
@@ -168,12 +167,11 @@ public class ArenaRegenController {
      *
      * @param regenPlugin the regen plugin to paste the schematic from
      * @param worldName the name of the world
-     * @param id the id/name of the schematic
      * @param schematic the name of the schematic
      * @param loc the location to paste the schematic at
      */
-    public static void pasteSchematic(RegenPlugin regenPlugin, String worldName, String id, String schematic, Location loc) {
-        registeredRegenPlugins.get(regenPlugin).pasteSchematic(worldName, id, schematic, loc);
+    public static void pasteSchematic(RegenPlugin regenPlugin, String worldName, String schematic, Location loc) {
+        registeredRegenPlugins.get(regenPlugin).pasteSchematic(worldName, schematic, loc);
     }
 
     /**
