@@ -4,11 +4,7 @@ import mc.euro.version.FieldTester;
 import mc.euro.version.Version;
 import mc.euro.version.VersionFactory;
 import org.battleplugins.arenaregenutil.AbstractArenaRegenHandler;
-import org.battleplugins.arenaregenutil.region.ArenaRegion;
-import org.battleplugins.arenaregenutil.region.ArenaSelection;
 import org.bukkit.Bukkit;
-import org.bukkit.Location;
-import org.bukkit.entity.Player;
 import org.bukkit.plugin.Plugin;
 
 import java.lang.reflect.Constructor;

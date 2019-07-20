@@ -5,8 +5,6 @@ import org.bukkit.World;
 
 /**
  * Stores basic selection info for block restoration.
- * This class is almost an exact copy of {@link ArenaRegion},
- * however, this is mainly a wrapper for when selecting a region.
  *
  * @author Redned
  */
@@ -16,7 +14,7 @@ public class ArenaSelection {
     private Location max;
 
     /**
-     * Constructs a new ArenaRegion instance
+     * Constructs a new ArenaSelection instance
      *
      * @param min the minimum point of the region
      * @param max the maximum point of the region
