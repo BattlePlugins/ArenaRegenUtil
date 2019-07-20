@@ -2,9 +2,8 @@ package org.battleplugins.arenaregenutil;
 
 import org.battleplugins.arenaregenutil.region.ArenaRegion;
 import org.battleplugins.arenaregenutil.region.ArenaSelection;
-import org.battleplugins.arenaregenutil.worldedit.PylamoRegenController;
+import org.battleplugins.arenaregenutil.pylamorestoration.PylamoRegenController;
 import org.battleplugins.arenaregenutil.worldedit.WorldEditRegenController;
-import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.block.Block;
 import org.bukkit.entity.Player;

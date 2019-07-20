@@ -1,9 +1,6 @@
-package org.battleplugins.arenaregenutil.worldedit;
+package org.battleplugins.arenaregenutil.pylamorestoration;
 
 import org.battleplugins.arenaregenutil.AbstractArenaRegenHandler;
-import org.battleplugins.arenaregenutil.region.ArenaRegion;
-import org.bukkit.Location;
-import org.bukkit.entity.Player;
 
 import java.lang.reflect.Constructor;
 
