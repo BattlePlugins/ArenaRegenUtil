@@ -29,13 +29,12 @@ public class WorldEditRegenController {
      * @return the proper WorldEditRegionHandler version for the server's version
      */
     public static AbstractArenaRegenHandler newInstance() {
-        Version<Plugin> fastAsyncWorldEdit = VersionFactory.getPluginVersion("FastAsyncWorldEdit");
         Version<Plugin> worldEdit = VersionFactory.getPluginVersion("WorldEdit");
 
         // Since FAWE doesn't need WorldEdit to function, we need to check if FAWE is installed instead
-        if (Bukkit.getPluginManager().getPlugin("FastAsyncWorldEdit") != null) {
+        if (Bukkit.getPluginManager().isPluginEnabled("FastAsyncWorldEdit")) {
             wep = Bukkit.getPluginManager().getPlugin("FastAsyncWorldEdit");
-        } else if (Bukkit.getPluginManager().getPlugin("WorldEdit") != null) {
+        } else if (Bukkit.getPluginManager().isPluginEnabled("WorldEdit")) {
             wep = Bukkit.getPluginManager().getPlugin("WorldEdit");
         }
 
@@ -43,15 +42,20 @@ public class WorldEditRegenController {
         if (!isInitialized)
             return null;
 
-        if (fastAsyncWorldEdit.isGreaterThanOrEqualTo("1.13") || worldEdit.isCompatible("7")) {
-            return instantiate("v7");
+        AbstractArenaRegenHandler regenHandler = null;
+        if (worldEdit.isCompatible("7")) {
+            regenHandler = instantiate("v7");
         } else if (worldEdit.isLessThan("7") && worldEdit.isCompatible("6")) {
-            return instantiate("v6");
+            regenHandler = instantiate("v6");
         } else if (worldEdit.isLessThan("6") && worldEdit.isCompatible("5")) {
-            return instantiate("v5");
+            regenHandler = instantiate("v5");
         }
 
-        return null;
+        if (regenHandler != null && Bukkit.getPluginManager().isPluginEnabled("FastAsyncWorldEdit")) {
+            return new FAWERegenWrapper(regenHandler);
+        }
+
+        return regenHandler;
     }
 
     private static AbstractArenaRegenHandler instantiate(String version) {
