@@ -10,11 +10,8 @@ import org.bukkit.plugin.Plugin;
 import java.lang.reflect.Constructor;
 
 /**
- * We want to always reference an abstraction of WorldGuard and have the
+ * We want to always reference an abstraction of WorldEdit and have the
  * actual implementation decided at runtime: v5, v6, v7.
- *
- * This class was a conversion from the static wrapper WorldGuardUtil.
- * Converted to an abstraction so that our implementation can vary at runtime.
  *
  * @author alkarin, Nikolai, Redned
  */
