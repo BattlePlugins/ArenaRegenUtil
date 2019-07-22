@@ -1,6 +1,9 @@
 package org.battleplugins.arenaregenutil.pylamorestoration;
 
+import mc.euro.version.FieldTester;
 import org.battleplugins.arenaregenutil.AbstractArenaRegenHandler;
+import org.bukkit.Bukkit;
+import org.bukkit.plugin.Plugin;
 
 import java.lang.reflect.Constructor;
 
@@ -11,6 +14,7 @@ import java.lang.reflect.Constructor;
  */
 public class PylamoRegenController {
 
+    private static Plugin pylamoPlugin;
     private static AbstractArenaRegenHandler handler = newInstance();
 
     /**
@@ -19,6 +23,14 @@ public class PylamoRegenController {
      * @return the proper PylamoRegenHandler version for the server's version
      */
     public static AbstractArenaRegenHandler newInstance() {
+        if (Bukkit.getPluginManager().isPluginEnabled("PylamoRestorationSystem")) {
+            pylamoPlugin = Bukkit.getPluginManager().getPlugin("PylamoRestorationSystem");
+        }
+
+        boolean isInitialized = (pylamoPlugin != null && FieldTester.isInitialized(pylamoPlugin));
+        if (!isInitialized)
+            return null;
+
         String classPackage = "org.battleplugins.arenaregenutil.pylamorestoration.PylamoRegenHandler";
         AbstractArenaRegenHandler handler = null;
         Class<?>[] args = {};

@@ -49,10 +49,7 @@ public class ArenaRegenController {
      * @return if the specified regen plugin is found
      */
     public static boolean hasRegenPlugin(RegenPlugin regenPlugin) {
-        if (!registeredRegenPlugins.containsKey(regenPlugin))
-            return false;
-
-        return true;
+        return registeredRegenPlugins.containsKey(regenPlugin);
     }
 
     /**

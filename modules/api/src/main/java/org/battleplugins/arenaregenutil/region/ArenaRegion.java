@@ -1,6 +1,5 @@
 package org.battleplugins.arenaregenutil.region;
 
-import org.bukkit.Location;
 import org.bukkit.World;
 
 /**
