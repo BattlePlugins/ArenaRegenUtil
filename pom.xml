@@ -20,6 +20,7 @@
         <module>modules/api</module>
         <!-- <module>modules/coreprotect</module> -->
         <module>modules/pylamorestoration</module>
+        <module>modules/rollbackcore</module>
         <module>modules/worldedit/v5</module>
         <module>modules/worldedit/v6</module>
         <module>modules/worldedit/v7</module>

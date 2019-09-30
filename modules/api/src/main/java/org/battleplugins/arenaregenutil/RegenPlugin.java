@@ -6,5 +6,6 @@ public enum RegenPlugin {
     CORE_PROTECT,
     NONE,
     PYLAMO_RESTORATION,
+    ROLLBACK_CORE,
     WORLDEDIT,
 }

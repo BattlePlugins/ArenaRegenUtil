@@ -8,10 +8,10 @@
         <relativePath>../../</relativePath>
     </parent>
     <groupId>org.battleplugins.arenaregenutil</groupId>
-    <artifactId>ArenaRegenUtil-pylamorestoration</artifactId>
+    <artifactId>ArenaRegenUtil-rollbackcore</artifactId>
     <version>parent</version>
     <packaging>jar</packaging>
-    <name>ArenaRegenUtil-pylamorestoration</name>
+    <name>ArenaRegenUtil-rollbackcore</name>
     <dependencies>
         <dependency>
             <groupId>org.bukkit</groupId>
@@ -28,8 +28,8 @@
         </dependency>
         <dependency>
             <groupId>unknown.plugins</groupId>
-            <artifactId>PylamoRestorationSystem</artifactId>
-            <version>0.4</version>
+            <artifactId>RollbackCore</artifactId>
+            <version>3.4.3</version>
             <scope>provided</scope>
             <optional>true</optional>
         </dependency>

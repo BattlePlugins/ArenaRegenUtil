@@ -3,6 +3,7 @@ package org.battleplugins.arenaregenutil;
 import org.battleplugins.arenaregenutil.region.ArenaRegion;
 import org.battleplugins.arenaregenutil.region.ArenaSelection;
 import org.battleplugins.arenaregenutil.pylamorestoration.PylamoRegenController;
+import org.battleplugins.arenaregenutil.rollbackcore.RollbackCoreRegenController;
 import org.battleplugins.arenaregenutil.worldedit.WorldEditRegenController;
 import org.bukkit.Location;
 import org.bukkit.block.Block;
@@ -39,6 +40,11 @@ public class ArenaRegenController {
         AbstractArenaRegenHandler pylamo = PylamoRegenController.newInstance();
         if (pylamo != null) {
             registeredRegenPlugins.put(RegenPlugin.PYLAMO_RESTORATION, pylamo);
+        }
+
+        AbstractArenaRegenHandler rollbackcore = RollbackCoreRegenController.newInstance();
+        if (rollbackcore != null) {
+            registeredRegenPlugins.put(RegenPlugin.ROLLBACK_CORE, rollbackcore);
         }
     }
 
@@ -187,5 +193,14 @@ public class ArenaRegenController {
      */
     public static ArenaSelection getSelection(RegenPlugin regenPlugin, Player player) {
         return registeredRegenPlugins.get(regenPlugin).getSelection(player);
+    }
+
+    /**
+     * Returns the plugin hooked into ArenaRegenUtil
+     *
+     * @return the plugin hooked into ArenaRegenUtil
+     */
+    public static Plugin getPlugin() {
+        return plugin;
     }
 }
