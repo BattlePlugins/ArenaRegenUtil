@@ -22,12 +22,12 @@ public class RollbackCoreRegenHandler extends AbstractArenaRegenHandler {
     @Override
     public void saveSchematic(Player player, String schematic) {
         ArenaSelection selection = getSelection(player);
-        new Copy(selection.getMinimumPoint(), selection.getMaximumPoint(), ArenaRegenController.getPlugin() + "/saves/schematics/", player, "");
+        new Copy(selection.getMinimumPoint(), selection.getMaximumPoint(), ArenaRegenController.getPlugin().getDataFolder() + "/saves/schematics/" + schematic, player, "").run();
     }
 
     @Override
     public void pasteSchematic(String worldName, String schematic, Location loc) {
-        new Paste(loc, ArenaRegenController.getPlugin() + "/saves/schematics/" + schematic, Bukkit.getConsoleSender(), true, false, "");
+        new Paste(loc, ArenaRegenController.getPlugin().getDataFolder() + "/saves/schematics/" + schematic, Bukkit.getConsoleSender(), true, false, "").run();
     }
 
     @Override
