@@ -105,7 +105,6 @@
     </dependencies>
     <build>
         <finalName>ArenaRegenUtil</finalName>
-        <directory>../../target</directory>
         <extensions>
             <extension>
                 <groupId>org.apache.maven.wagon</groupId>
