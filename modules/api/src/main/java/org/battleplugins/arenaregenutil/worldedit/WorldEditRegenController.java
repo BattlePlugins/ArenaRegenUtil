@@ -40,7 +40,9 @@ public class WorldEditRegenController {
             return null;
 
         AbstractArenaRegenHandler regenHandler = null;
-        if (worldEdit.isCompatible("7")) {
+        if (worldEdit.isCompatible("7.1"))
+            regenHandler = instantiate("v7_1");
+        else if (worldEdit.isLessThan("7.1") && worldEdit.isCompatible("7")) {
             regenHandler = instantiate("v7");
         } else if (worldEdit.isLessThan("7") && worldEdit.isCompatible("6")) {
             regenHandler = instantiate("v6");
